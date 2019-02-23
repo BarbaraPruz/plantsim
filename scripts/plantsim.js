@@ -8,20 +8,23 @@
 // updates are passed to the environment object.  
 
 import Environment from './model/environment.js';
+import Plant from './model/plant.js';
 import Dashboard from './view/dashboard.js';
 import Controls from './view/controls.js';
 
 // "model"
 var environmentModel;   // figures out moisture, npk, light levels based on time and adjustments
+var plantModel;     
 
 // "view" - what you see on the screen.  
 var dashboard;
-var controls;
+var controls; 
 
 function initialize() {
     console.log("initialize");
     environmentModel = new Environment();
-    dashboard = new Dashboard(environmentModel);
+    plantModel = new Plant();
+    dashboard = new Dashboard(environmentModel,plantModel);
     controls = new Controls(environmentModel);
 }
 

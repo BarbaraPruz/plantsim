@@ -15,18 +15,24 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
   <link href="./styles/style.css" rel="stylesheet">
 </head>
-
+ 
 <body>
   <div class = "container-fluid">  
     <h1>Plant Simulator</h1>
     <div id="plant">
-      <h2>Plant Shown Here</h2>
+      <h2>Plant Height:<span id="plant_height"></span></h2>
     </div>
     <div id="environment">
-        <h2>Sensor Measurements Shown Here</h2>
+        <h2>Current Environment Measurements</h2>
+        <h3>Moisture:<span id="moisture"></span></h3>        
     </div>
     <div id="controls">
-        <h2>User Action Panel Shown Here</h2>
+        <h2>User Action Panel</h2>
+        <!-- note: range not supported by ie9 and earlier -->
+        <form id="controls_form">
+          Add Water (ml): <input type="range" id="control_water" name="water" min="0" max="100"><br/>          
+          <input type="submit">
+        </form>             
     </div>          
   </div>
 
