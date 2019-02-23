@@ -3,6 +3,7 @@ class Dashboard {
         console.log("Dashboard Constructor");
         this.plant = plantModel;
         this.environment =environmentModel;
+        this.environment.subscribe( () => this.showEnvironment())
         this.plantDOMElement = document.getElementById("plant_height");
         this.moistureDOMElement = document.getElementById("moisture");        
         this.showPlant();
@@ -14,8 +15,10 @@ class Dashboard {
     }
 
     showEnvironment() {
+        console.log("Dashboard Show Environment");
         this.moistureDOMElement.innerHTML = this.environment.getMoisture();   
-    } 
+    }
+ 
 }
 
 export default Dashboard;
