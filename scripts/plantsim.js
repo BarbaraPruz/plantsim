@@ -15,17 +15,27 @@ import Controls from './view/controls.js';
 // "model"
 var environmentModel;   // figures out moisture, npk, light levels based on time and adjustments
 var plantModel;     
-
+ 
 // "view" - what you see on the screen.  
 var dashboard;
-var controls; 
+var controls;
+// To Do: make this all an object (move vars to instance variables)
+// To Do: game restart
+function checkGame() {
+    let height = plantModel.getHeight();
+    if (height < 0) 
+        alert ("You Killed the Plant!")
+    else if (height >= 10)
+        alert ("Congratulations! Plant is ready.")    
+}
 
 function initialize() {
     console.log("initialize");
     environmentModel = new Environment();
-    plantModel = new Plant();
+    plantModel = new Plant(environmentModel);
     dashboard = new Dashboard(environmentModel,plantModel);
     controls = new Controls(environmentModel);
+    plantModel.subscribe( checkGame)
 }
 
 document.addEventListener("DOMContentLoaded", function(event) { 
