@@ -1,22 +1,27 @@
 class Dashboard {
     constructor(environmentModel,plantModel) {
-        console.log("Dashboard Constructor");
+        // hook up to the model.  and we save references to the model objects so we can call later
         this.plant = plantModel;
         this.environment =environmentModel;
         this.environment.subscribe( () => this.showEnvironment());
-        this.plant.subscribe( () => this.showPlant())        
+        this.plant.subscribe( () => this.showPlant())   
+        // save off DOM info so we don't have to keep looking it up     
         this.plantDOMElement = document.getElementById("plant_height");
-        this.moistureDOMElement = document.getElementById("moisture");        
+        this.moistureDOMElement = document.getElementById("moisture");
+        this.lightDOMElement = document.getElementById("light");        
+        // show initial status        
         this.showPlant();
         this.showEnvironment();
     } 
     
     showPlant() {
-        this.plantDOMElement.innerHTML = this.plant.getHeight();   
+        let height = this.plant.getHeight().toFixed(2);   
+        this.plantDOMElement.innerHTML = this.plant.getHeight().toFixed(2);         
     }
 
     showEnvironment() {
-        this.moistureDOMElement.innerHTML = this.environment.getMoisture();   
+        this.moistureDOMElement.innerHTML = this.environment.getMoisture(); 
+        this.lightDOMElement.innerHTML = this.environment.getLight();            
     }
 
 }

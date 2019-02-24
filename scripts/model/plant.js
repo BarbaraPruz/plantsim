@@ -1,31 +1,33 @@
 class Plant {
     constructor(environment) {
-        console.log("Plant Model Constructor");
-        this.height = 0;
-        this.environment = environment;
-        this.observers= [];        
+        this.height = 0.01;
+        this.observers= [];
+        // connect to environment
+        this.environment = environment;       
         this.handleEnvironmentChange = this.handleEnvironmentChange.bind(this);
         this.environment.subscribe(this.handleEnvironmentChange);
-    } 
+    }
+     
     getHeight() {
         return this.height;
     }
 
     handleEnvironmentChange() {
         let moisture = this.environment.getMoisture();
-        if (moisture <= 20) {
+        if (moisture <= 20) 
             --this.height;
-            this.notifyObservers();
-        }
-        else if (moisture >= 100) {
+        else if (moisture >= 100) 
             --this.height;
-            this.notifyObservers();
-        }
-        else {
+        else 
             ++this.height;
-            this.notifyObservers();            
-        }            
+        let light = this.environment.getLight();
+        if (light < 20)
+            this.height -= .5
+        if (this.height < 0) this.height = 0;
+        this.notifyObservers();                      
     }
+
+    // support listenters
     subscribe(cb){
         this.observers.push(cb);
     }
