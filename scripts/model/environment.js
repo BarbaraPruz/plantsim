@@ -1,28 +1,37 @@
 class Environment {
     constructor() {
+        this.observers= [];
+        this.reset();   // initialize values
+    }
+
+    reset() {
         this.moisture = 50;
         this.light = 50;
         this.pH = 6;
-        this.observers= [];
-    } 
+    }
 
     getMoisture() { return this.moisture; }
     getLight() { return this.light; }
     getpH() { return this.pH; }
 
     update(vals) {
-        console.log("Update Environment, vals",vals," current",this.moisture,this.light,this.pH);
+        //console.log("Update Environment, vals",vals," current",this.moisture,this.light,this.pH);
         // first, adjust current values for normal use of moisture, etc.
         this.dailyAdjust();
 
-        // apply individual new settings
+        // apply new settings
         this.moisture += this.translateWaterVal(vals.water);
+        if (this.moisture < 0) this.moisture = 0;
         this.pH += this.translateFertilizerVal(vals.fertilizer)
+        if (this.pH < 0) 
+            this.pH=0;
+        else if (this.pH > 14)
+            this.pH=14;
         if ('light' in vals) {
             this.light = vals.light;
-        }
-        
-         console.log("Update Environment done",this.moisture,this.light,this.pH);
+        }     
+        //console.log("Update Environment done",this.moisture,this.light,this.pH);
+
         // let everyone know
         this.notifyObservers();
     }
@@ -30,11 +39,11 @@ class Environment {
     dailyAdjust() {
         // each day we loose 5% moisture (5% of total available range)
         this.moisture -= 5;
-        // Some factor influence others: if high moisture, drop pH, else raise it a little
+        // Some factors influence others: if high moisture, drop pH, else raise it a little
         if (this.moisture > 75)
             this.pH -= 0.1;
         else
-            this.pH += 0.05;
+            this.pH += 0.08;
     }
 
     translateWaterVal(val) {
@@ -60,6 +69,7 @@ class Environment {
                 return 0;   // no fertilizer
         }
     }
+     
     // support listeners
     subscribe(cb){
         this.observers.push(cb);

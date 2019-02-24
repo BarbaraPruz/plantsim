@@ -1,6 +1,6 @@
-class Dashboard {
+class Dashboard { 
     constructor(environmentModel,plantModel) {
-        // hook up to the model.  and we save references to the model objects so we can call later
+        // hook up to the model. 
         this.plant = plantModel;
         this.environment =environmentModel;
         this.environment.subscribe( () => this.showEnvironment());
@@ -13,8 +13,8 @@ class Dashboard {
         // show initial status        
         this.showPlant();
         this.showEnvironment();
-    } 
-    
+    }
+     
     showPlant() {
         let height = this.plant.getHeight().toFixed(2);   
         this.plantDOMElement.innerHTML = this.plant.getHeight().toFixed(2);         

@@ -1,4 +1,4 @@
-class Controls {
+class Controls { 
     constructor(environmentModel) {
         this.environment = environmentModel;
         document.getElementById("controls_form").addEventListener("submit", this.onSubmit);             
@@ -13,7 +13,7 @@ class Controls {
         if (ev.target.fertilizer.value != "none")
             vals.fertilizer = ev.target.fertilizer.value;         
         this.environment.update(vals);
-    }     
+    }    
 }
-
+ 
 export default Controls;

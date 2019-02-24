@@ -2,7 +2,7 @@ import Environment from './model/environment.js';
 import Plant from './model/plant.js';
 import Dashboard from './view/dashboard.js';
 import Controls from './view/controls.js';
-
+ 
 const TARGET_HEIGHT = 10;
 class Controller {
     constructor() {
@@ -18,15 +18,20 @@ class Controller {
 
     run() {
         // nothing to do here right now....
-    } 
+    }
 
-    // To Do: game restart
     checkGame() {
         let height = this.plantModel.getHeight();
-        if (height === 0) 
-            alert ("You Killed the Plant!")
+        let msg;
+        if (height <= 0.00) 
+            msg = "You killed the Plant!";
         else if (height >= TARGET_HEIGHT)
-            alert ("Congratulations! Plant is ready.")    
+           msg = "Congratulations! Plant is ready.";
+        if (msg) {
+            alert(msg);
+            this.environmentModel.reset();
+            this.plantModel.reset();
+        }    
     }    
 }
 

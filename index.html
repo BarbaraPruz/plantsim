@@ -16,16 +16,16 @@
 <body>
   <div class = "container-fluid">  
     <h1>Plant Simulator</h1>
-    <div id="plant">
+    <section id="plant">
       <h2>Plant Height:<span id="plant_height"></span></h2>
-    </div>
-    <div id="environment">
+    </section>
+    <section id="environment">
         <h2>Current Environment Measurements</h2>
         <h3>Moisture:<span id="moisture"></span></h3> 
         <h3>Light:<span id="light"></span></h3>  
         <h3>pH Level:<span id="ph"></span></h3>                          
-    </div>
-    <div id="controls">
+    </section>
+    <section id="controls">
         <h2>User Action Panel</h2>
         <p>What do you want to do today?</p>
         <!-- note: range not supported by ie9 and earlier -->
@@ -35,21 +35,21 @@
             <option value="low">Low</option>
             <option value="medium">Medium</option>
             <option value="high">High</option>                        
-          </select>  
+          </select>  <br/>
           Adjust Light: <input type="range"  name="light" min="0" max="100"><br/>  
           Fertilizer: 
             <select name="fertilizer">
               <option value="none">None</option>              
               <option value="lime">Lime</option>
               <option value="peat">Peat</option>             
-            </select>                     
+            </select> <br/>                    
           <input type="submit">
         </form>             
-    </div>          
+    </section>          
   </div>
 
 <!-- Scripts -->
 <script type="module" src="./scripts/plantsim.js"></script>
 </body>
-
+ 
 </html>
