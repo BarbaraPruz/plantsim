@@ -23,9 +23,10 @@ User control adjustments:
   * pH: Best is 5.9-6.1, Good is 5.5-5.9 or 6.1-6.2, OK is 5.2-5.5 or 6.2-6.8.  otherwise poor.
 
 ## App Design
-The app has an MVC type architecture. To facilitate synchronization between the model and the view, 
-the model classes implement an observer pattern. This allows the view (and controller) to be notified 
-of changes.
+The app has an architecture similar to MVC. To facilitate synchronization between the model and the 
+view, the model classes implement an observer pattern. This allows the view (and controller) to be 
+notified of changes.  Unlike conventional MVC, the PlantSim Controller is not coordinating 
+interactions between the view and model.
 
 Controller : creates all the top level objects for the model and view. It listens for plant changes
 and determines when the game is over (plant is 10" or dead)
