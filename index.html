@@ -27,14 +27,21 @@
     </div>
     <div id="controls">
         <h2>User Action Panel</h2>
+        <p>What do you want to do today?</p>
         <!-- note: range not supported by ie9 and earlier -->
         <form id="controls_form">
-          Add Water (ml): <input type="range" name="water" min="0" max="100"><br/>
+          Water: <select name="water">
+            <option value="none">None</option>              
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>                        
+          </select>  
           Adjust Light: <input type="range"  name="light" min="0" max="100"><br/>  
           Fertilizer: 
             <select name="fertilizer">
               <option value="none">None</option>              
               <option value="lime">Lime</option>
+              <option value="peat">Peat</option>             
             </select>                     
           <input type="submit">
         </form>             

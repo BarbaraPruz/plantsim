@@ -21,9 +21,9 @@ class Dashboard {
     }
 
     showEnvironment() {
-        this.moistureDOMElement.innerHTML = this.environment.getMoisture(); 
+        this.moistureDOMElement.innerHTML = this.environment.getMoisture().toFixed(2); 
         this.lightDOMElement.innerHTML = this.environment.getLight();
-        this.phDOMElement.innerHTML = this.environment.getpH();                            
+        this.phDOMElement.innerHTML = this.environment.getpH().toFixed(2);                            
     }
 
 }

@@ -38,3 +38,4 @@ function initialize() {
 document.addEventListener("DOMContentLoaded", (event) => { 
     initialize();
 });
+
