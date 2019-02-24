@@ -6,8 +6,8 @@ class Plant {
         this.environment = environment;       
         this.handleEnvironmentChange = this.handleEnvironmentChange.bind(this);
         this.environment.subscribe(this.handleEnvironmentChange);
-    }
-     
+    } 
+    
     getHeight() {
         return this.height;
     }
@@ -23,6 +23,10 @@ class Plant {
         let light = this.environment.getLight();
         if (light < 20)
             this.height -= .5
+        let pH = this.environment.getpH();
+        if ( (pH < 5.0) || (pH > 7.0))
+            this.height -= .5;
+            
         if (this.height < 0) this.height = 0;
         this.notifyObservers();                      
     }

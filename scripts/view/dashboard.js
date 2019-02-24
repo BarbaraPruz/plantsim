@@ -8,7 +8,8 @@ class Dashboard {
         // save off DOM info so we don't have to keep looking it up     
         this.plantDOMElement = document.getElementById("plant_height");
         this.moistureDOMElement = document.getElementById("moisture");
-        this.lightDOMElement = document.getElementById("light");        
+        this.lightDOMElement = document.getElementById("light"); 
+        this.phDOMElement = document.getElementById("ph");                
         // show initial status        
         this.showPlant();
         this.showEnvironment();
@@ -21,7 +22,8 @@ class Dashboard {
 
     showEnvironment() {
         this.moistureDOMElement.innerHTML = this.environment.getMoisture(); 
-        this.lightDOMElement.innerHTML = this.environment.getLight();            
+        this.lightDOMElement.innerHTML = this.environment.getLight();
+        this.phDOMElement.innerHTML = this.environment.getpH();                            
     }
 
 }
