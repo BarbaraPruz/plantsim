@@ -17,9 +17,8 @@ class Plant {
         return this.height;
     }
 
-    // ToDo: Delegate height adjustment (or at least ratings) to different object.
-    // Alternatively, sub-class Plant for different plant types.
-    // This would allow easy plant customizations
+    // How our crazy "generic" plant handles environment changes
+    // Plant subclasses do something more sensible.
     handleEnvironmentChange() {
         // ratings are 0-4(best).  Each factor has equal weight.
         // console.log("Plant env change, height",this.height,"ratings",
