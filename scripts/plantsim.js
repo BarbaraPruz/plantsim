@@ -2,7 +2,8 @@ import Environment from './model/environment.js';
 import Plant from './model/plant.js';
 import Dashboard from './view/dashboard.js';
 import Controls from './view/controls.js';
- 
+import GameController from './view/gameController.js';
+
 const TARGET_HEIGHT = 10;
 class Controller {
     constructor() {
@@ -14,10 +15,15 @@ class Controller {
         // create view objects       
         this.dashboard = new Dashboard(this.environmentModel,this.plantModel);
         this.controls = new Controls(this.environmentModel);
+        this.gameController = new GameController(this.startGame)
     }
 
     run() {
         // nothing to do here right now....
+    }
+
+    startGame(vals) {
+        console.log("Start Game values",vals);
     }
 
     checkGame() {
