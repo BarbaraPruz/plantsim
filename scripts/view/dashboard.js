@@ -1,20 +1,24 @@
 class Dashboard { 
-    constructor(environmentModel,plantModel) {
+    constructor(environmentModel) {
         // hook up to the model. 
-        this.plant = plantModel;
+        this.plant = null;
         this.environment =environmentModel;
         this.environment.subscribe( () => this.showEnvironment());
-        this.plant.subscribe( () => this.showPlant())   
         // save off DOM info so we don't have to keep looking it up     
         this.plantDOMElement = document.getElementById("plant_height");
         this.moistureDOMElement = document.getElementById("moisture");
         this.lightDOMElement = document.getElementById("light"); 
         this.phDOMElement = document.getElementById("ph");                
         // show initial status        
-        this.showPlant();
         this.showEnvironment();
     }
      
+    setPlant(plant) {
+        this.plant = plant;
+        this.plant.subscribe( () => this.showPlant()) ;
+        this.showPlant();   
+    }
+    
     showPlant() {
         let height = this.plant.getHeight().toFixed(2);   
         this.plantDOMElement.innerHTML = this.plant.getHeight().toFixed(2);         

@@ -1,4 +1,4 @@
-import Plant from 'plant.js';
+import Plant from './plant.js';
 
 class Tomato extends Plant {
     constructor(environment) {
@@ -7,6 +7,7 @@ class Tomato extends Plant {
     
     // tomatoes will grow fast
     handleEnvironmentChange() {
+        console.log("tomato - handle environment change");
         // ratings are 0-4(best).  Each factor has equal weight.
         let rating = this.rateMoisture(this.environment.getMoisture())
                     + this.rateLight(this.environment.getLight())

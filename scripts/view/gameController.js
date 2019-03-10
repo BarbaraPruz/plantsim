@@ -1,14 +1,25 @@
 class GameController { 
-    constructor(callback) {
+    constructor(callback,context) {
         this.startGameCallback = callback;
-        document.getElementById("game_form").addEventListener("submit", this.onSubmit);             
+        this.callbackContext = context;
+        this.gameFormElement = document.getElementById("game_form"); 
+        this.gameFormElement.addEventListener("submit", this.onSubmit);                     
     }
 
+    disable() {
+        this.gameFormElement.disabled = true; 
+    }
+
+    enable() {
+        this.gameFormElement.disabled = false; 
+    }  
+    
     onSubmit = (ev) => {
+        console.log("OnSubmit")
         ev.preventDefault();
         let vals={};
         vals.plantType = ev.target.plant_type.value;      
-        this.startGameCallback(vals);
+        this.startGameCallback.call(this.callbackContext,vals);
     }    
 }
  
