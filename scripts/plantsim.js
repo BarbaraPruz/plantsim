@@ -1,7 +1,7 @@
 import Environment from './model/environment.js';
-// ToDo: PlantFactory
+
+import PlantFactory from './model/plantFactory.js'
 import Plant from './model/plant.js';
-import Tomato from './model/tomato.js';
 import Dashboard from './view/dashboard.js';
 import Controls from './view/controls.js';
 import GameController from './view/gameController.js';
@@ -28,13 +28,7 @@ class Controller {
     startGame(vals) {
         console.log("Start Game values",vals);
         // construct plant        
-        switch (vals.plantType) {
-            case 'tomato':
-                this.plantModel = new Tomato(this.environmentModel);
-                break;
-            default:
-                this.plantModel = new Plant(this.environmentModel);
-        }
+        this.plantModel = PlantFactory.createPlant(vals.plantType, this.environmentModel);
         this.plantModel.subscribe(this.checkGame); 
         this.dashboard.setPlant(this.plantModel);
         // reset environment model
