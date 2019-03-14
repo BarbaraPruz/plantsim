@@ -6,6 +6,7 @@ class Dashboard {
         this.environment.subscribe( () => this.showEnvironment());
         // save off DOM info so we don't have to keep looking it up     
         this.plantDOMElement = document.getElementById("plant_height");
+        this.plantProgressDOMElement = document.getElementById("plant_progress");        
         this.moistureDOMElement = document.getElementById("moisture");
         this.lightDOMElement = document.getElementById("light"); 
         this.phDOMElement = document.getElementById("ph");                
@@ -21,7 +22,9 @@ class Dashboard {
     
     showPlant() {
         let height = this.plant.getHeight().toFixed(2);   
-        this.plantDOMElement.innerHTML = this.plant.getHeight().toFixed(2);         
+        this.plantDOMElement.innerHTML = this.plant.getHeight().toFixed(2); 
+        console.log("Height",height,"%",(height/10.0 * 100));
+        this.plantProgressDOMElement.style.width = `${(height/10.0 * 100)}%`;
     }
 
     showEnvironment() {
