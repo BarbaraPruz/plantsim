@@ -1,0 +1,28 @@
+{
+  "name": "PlantSim",
+  "version": "1.0.0",
+  "description": "PlantSim is a simple front end web app (html + plain JS) that \"simulates\" plant growth. User can control \r how much light, water, and fertilizer to use each day. Goal is to get plant to grow to 10\".",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --require babel-core/register --require babel-polyfill --recursive scripts/tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BarbaraPruz/plantsim.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BarbaraPruz/plantsim/issues"
+  },
+  "homepage": "https://github.com/BarbaraPruz/plantsim#readme",
+  "dependencies": {
+    "babel": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "mocha": "^6.0.2"
+  }
+}
