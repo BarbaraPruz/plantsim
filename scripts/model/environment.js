@@ -23,10 +23,7 @@ class Environment {
         this.moisture += this.translateWaterVal(vals.water);
         if (this.moisture < 0) this.moisture = 0;
         this.pH += this.translateFertilizerVal(vals.fertilizer)
-        if (this.pH < 0) 
-            this.pH=0;
-        else if (this.pH > 14)
-            this.pH=14;
+        this.pH = this.pH > 14 ? 14 : this.pH < 0 ? 0 : this.pH;
         if ('light' in vals) {
             this.light = vals.light;
         }     
