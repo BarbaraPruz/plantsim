@@ -57,6 +57,7 @@ class Controller {
            } 
         }
         if (msg) {
+            this.environmentModel.freeze();
             alert(msg);           
             this.gameController.enable();
         }    
