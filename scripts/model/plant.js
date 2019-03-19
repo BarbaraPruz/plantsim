@@ -1,6 +1,7 @@
 class Plant {
     constructor(environment) {
         this.observers= [];
+        this.name="generic";
         // connect to environment
         this.environment = environment;       
         this.handleEnvironmentChange = this.handleEnvironmentChange.bind(this);
@@ -11,15 +12,23 @@ class Plant {
     
     reset() {
         this.height = 0.01;
+        this.days = 1;
     }
 
     getHeight() {
         return this.height;
     }
+    getDays() {
+        return this.days;
+    }
+    getName() {
+        return this.name;
+    }
 
     // How our crazy "generic" plant handles environment changes
     // Plant subclasses do something more sensible.
     handleEnvironmentChange() {
+        ++this.days;
         // ratings are 0-4(best).  Each factor has equal weight.
         // console.log("Plant env change, height",this.height,"ratings",
         //      this.rateMoisture(this.environment.getMoisture()),

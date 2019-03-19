@@ -3,7 +3,10 @@ class GameController {
         this.startGameCallback = callback;
         this.callbackContext = context;
         this.gameFormElement = document.getElementById("game_form"); 
-        this.gameFormElement.addEventListener("submit", this.onSubmit);                     
+        this.gameFormElement.addEventListener("submit", this.onSubmit);   
+
+        this.scoreDOMElement = document.getElementById("best_score");
+        this.plantDOMElement = document.getElementById("best_plant");       
     }
 
     disable() {
@@ -13,6 +16,11 @@ class GameController {
     enable() {
         this.gameFormElement.disabled = false; 
     }  
+    
+    updateStats(score, plant) {
+        this.scoreDOMElement.innerHTML=score;
+        this.plantDOMElement.innerHTML=plant;
+    }
     
     onSubmit = (ev) => {
         console.log("OnSubmit")
