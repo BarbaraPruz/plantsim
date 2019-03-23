@@ -1,8 +1,17 @@
 class Controls { 
     constructor(environmentModel) {
         this.environment = environmentModel;
-        document.getElementById("controls_form").addEventListener("submit", this.onSubmit);             
+        this.controlFormElement = document.getElementById("controls_form");
+        this.controlFormElement.addEventListener("submit", this.onSubmit);             
     }
+
+    disable() {
+        this.controlFormElement.disabled = true; 
+    }
+
+    enable() {
+        this.controlFormElement.disabled = false; 
+    }    
 
     onSubmit = (ev) => {
         ev.preventDefault();

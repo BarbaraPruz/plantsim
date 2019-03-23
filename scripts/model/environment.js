@@ -8,6 +8,17 @@ class Environment {
         this.moisture = 50;
         this.light = 50;
         this.pH = 6;
+        this.intervalTimer = setInterval( () => { 
+            console.log("timer!", this.intervalTimer);
+            this.dailyAdjust();
+            this.notifyObservers();
+        }, 10000);
+        console.log("Environment Reset",this.intervalTimer);
+    }
+
+    freeze() {
+        console.log("Clear timer",this.intervalTimer);
+        clearInterval(this.intervalTimer);
     }
 
     getMoisture() { return this.moisture; }
